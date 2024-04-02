@@ -3,11 +3,12 @@
  */
 
 import { Outlet } from 'react-router-dom'
+import { Heading } from '@chakra-ui/react'
 
 export default function Root() {
     return (
         <>
-          <h1>Rob Hess - Oregon State University</h1>
+          <Heading as="h1">Rob Hess - Oregon State University</Heading>
           <Outlet />
         </>
       )
