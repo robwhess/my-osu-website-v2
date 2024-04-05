@@ -3,13 +3,14 @@
  */
 
 import { Outlet } from 'react-router-dom'
-import { Heading } from '@chakra-ui/react'
+
+import Header from './components/Header'
 
 export default function Root() {
-    return (
-        <>
-          <Heading as="h1">Rob Hess - Oregon State University</Heading>
-          <Outlet />
-        </>
-      )
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  )
 }
