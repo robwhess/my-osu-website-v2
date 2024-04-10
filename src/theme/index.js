@@ -1,6 +1,8 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 
 import colors from './colors'
+
+import Link from './components/link'
 
 const styles = {
   global: {
@@ -13,5 +15,8 @@ const styles = {
 
 export default extendTheme({
   styles,
-  colors
-})
+  colors,
+  components: {
+    Link
+  }
+}, withDefaultColorScheme({ colorScheme: "brand" }))
