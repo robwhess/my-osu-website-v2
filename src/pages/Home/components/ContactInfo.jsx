@@ -11,6 +11,12 @@ export default function ContactInfo() {
         <Tbody>
           <Tr>
             <Td textAlign="right" verticalAlign="baseline">
+              <Text fontSize={["sm", "lg"]}>Email</Text>
+            </Td>
+            <Td><Link href="mailto:hessro@oregonstate.edu" isExternal>hessro@oregonstate.edu</Link></Td>
+          </Tr>
+          <Tr>
+            <Td textAlign="right" verticalAlign="baseline">
               <Text fontSize={["sm", "lg"]}>Office</Text>
             </Td>
             <Td>
@@ -21,12 +27,6 @@ export default function ContactInfo() {
               <Text>Oregon State University</Text>
               <Text>Corvallis, OR 97331</Text>
             </Td>
-          </Tr>
-          <Tr>
-            <Td textAlign="right" verticalAlign="baseline">
-              <Text fontSize={["sm", "lg"]}>Email</Text>
-            </Td>
-            <Td><Link href="mailto:hessro@oregonstate.edu" isExternal>hessro@oregonstate.edu</Link></Td>
           </Tr>
         </Tbody>
       </Table>
