@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
+import { ApolloProvider } from '@apollo/client'
+
+import { client as apolloClient } from '@/lib/apollo'
 
 import Root from '@/pages/Root'
 import Home from '@/pages/Home'
@@ -38,7 +41,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
+      <ApolloProvider client={apolloClient}>
+        <RouterProvider router={router} />
+      </ApolloProvider>
     </ChakraProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
