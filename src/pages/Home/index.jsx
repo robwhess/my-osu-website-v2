@@ -12,6 +12,7 @@ import robImg from '@/static/rob.jpg'
 
 import AboutMe from './components/AboutMe'
 import ContactInfo from './components/ContactInfo'
+import OfficeHours from './components/OfficeHours'
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
           <TabPanels>
             <TabPanel><AboutMe /></TabPanel>
             <TabPanel><ContactInfo /></TabPanel>
+            <TabPanel><OfficeHours /></TabPanel>
           </TabPanels>
         </Tabs>
       </VStack>
