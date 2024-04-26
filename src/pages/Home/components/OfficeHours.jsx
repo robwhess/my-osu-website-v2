@@ -14,8 +14,8 @@ const officeHoursQuery = gql`
                 start
                 end
                 location
-                videoconference_link
-                extra_info
+                videoconferenceLink
+                extraInfo
             }
         }
     }
