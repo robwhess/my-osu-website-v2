@@ -1,5 +1,7 @@
 import { useQuery, gql } from '@apollo/client'
-import { UnorderedList, ListItem } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
+
+import EventCard from '@/components/EventCard'
 
 const officeHoursQuery = gql`
   query {
@@ -29,11 +31,11 @@ export default function OfficeHours() {
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {data && data?.hoursCollection?.edges && (
-        <UnorderedList>
+        <Stack direction={["column", "column", "row"]} spacing={3}>
           {data.hoursCollection.edges.map(node => (
-            <ListItem key={node.node.id}>{node.node.day} {node.node.start} &ndash; {node.node.end}</ListItem>
+            <EventCard key={node.node.id} {...node.node} />
           ))}
-        </UnorderedList>
+        </Stack>
       )}
     </>
   )
