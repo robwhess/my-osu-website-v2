@@ -1,8 +1,8 @@
-import { Text, Link } from '@chakra-ui/react'
+import { Text, Link, Card } from '@chakra-ui/react'
 
 export default function AboutMe() {
   return (
-    <>
+    <Card p={[4, 10]}>
       <Text marginBottom={4}>
         Hello!  My name is Rob Hess, and I&apos;m an instructor in Computer Science at Oregon State University.  I mostly teach courses related to web and mobile app development.
       </Text>
@@ -15,6 +15,6 @@ export default function AboutMe() {
       <Text>
         Through it all, I&apos;ve been and remain an avid baker of bread, tender of gardens, player of games, and lover of cats, while also cycling through a million other hobbies, including taking photos and brewing beer.  Currently, I&apos;m honing my woodworking skills.
       </Text>
-    </>
+    </Card>
   )
 }
