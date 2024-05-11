@@ -19,7 +19,7 @@ export default function Home() {
     <Container as="main" maxW="container.md" centerContent marginBlock={8}>
       <VStack w="100%">
         <Image src={robImg} alt="Photo of Rob" />
-        <Tabs w="100%" marginTop={4}>
+        <Tabs isLazy w="100%" marginTop={4}>
           <TabList>
             <Tab>About me</Tab>
             <Tab>Contact info</Tab>

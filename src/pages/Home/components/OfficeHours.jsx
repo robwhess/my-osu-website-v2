@@ -1,5 +1,9 @@
 import { useQuery, gql } from '@apollo/client'
-import { Stack } from '@chakra-ui/react'
+import {
+  Stack,
+  Spinner,
+  Alert, AlertIcon, AlertTitle, AlertDescription
+} from '@chakra-ui/react'
 
 import EventCard from '@/components/EventCard'
 
@@ -28,8 +32,14 @@ export default function OfficeHours() {
   const { data, loading, error } = useQuery(officeHoursQuery)
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
+      {loading && <Spinner />}
+      {error && (
+        <Alert status="error" variant="left-accent">
+          <AlertIcon />
+          <AlertTitle>Error fetching office hours.</AlertTitle>
+          <AlertDescription>Please try again later.</AlertDescription>
+        </Alert>
+      )}
       {data && data?.hoursCollection?.edges && (
         <Stack direction={["column", "column", "row"]} spacing={3}>
           {data.hoursCollection.edges.map(node => (
