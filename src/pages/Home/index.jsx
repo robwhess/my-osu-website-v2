@@ -1,13 +1,16 @@
 /*
  * Home page.
  */
+import { useEffect, useState } from 'react'
 import {
   Container,
-  VStack,
+  VStack, Flex,
   Image,
   Tabs, TabList, Tab, TabPanels, TabPanel,
+  IconButton,
 } from '@chakra-ui/react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
+import { FaLink } from 'react-icons/fa6'
 
 import robImg from '@/static/rob.jpg'
 
@@ -23,16 +26,20 @@ const tabs = Object.freeze({
 const tabKeys = Object.keys(tabs)
 
 export default function Home() {
-  const navigate = useNavigate()
+  const [ tabIndex, setTabIndex ] = useState(0)
   const { hash } = useLocation()
-  let tabIndex = Object.keys(tabs).indexOf(hash.slice(1))
-  tabIndex = tabIndex < 0 ? 0 : tabIndex
 
-  function handleTabChange(index) {
-    const tabKey = tabKeys[index]
-    if (tabKey) {
-      navigate(`#${tabKey}`)
-    }
+  /*
+   * Make sure the current tab is synchronized with the URL hash if the hash
+   * changes.
+   */
+  useEffect(() => {
+    const idx = Math.max(0, Object.keys(tabs).indexOf(hash.slice(1)))
+    setTabIndex(idx)
+  }, [ hash ])
+
+  function handleTabChange(idx) {
+    setTabIndex(idx)
   }
 
   return (
@@ -40,9 +47,10 @@ export default function Home() {
       <VStack w="100%">
         <Image src={robImg} alt="Photo of Rob" />
         <Tabs isFitted isLazy w="100%" marginTop={4} index={tabIndex} onChange={handleTabChange}>
-          <TabList>
-            {tabKeys.map(tabKey => <Tab key={tabKey}>{tabs[tabKey].title}</Tab>)}
-          </TabList>
+          <Flex w="100%">
+            <TabList flexGrow="1">{tabKeys.map(tabKey => (<Tab key={tabKey}>{tabs[tabKey].title}</Tab>))}</TabList>
+            <IconButton icon={<FaLink/>} variant="link" as={Link} to={`#${tabKeys[tabIndex]}`} size="lg" color="inherit" />
+          </Flex>
           <TabPanels>
             {tabKeys.map(tabKey => <TabPanel key={tabKey}>{tabs[tabKey].element}</TabPanel>)}
           </TabPanels>
