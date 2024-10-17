@@ -48,8 +48,17 @@ export default function Home() {
         <Image src={robImg} alt="Photo of Rob" />
         <Tabs isFitted isLazy w="100%" marginTop={4} index={tabIndex} onChange={handleTabChange}>
           <Flex w="100%">
-            <TabList flexGrow="1">{tabKeys.map(tabKey => (<Tab key={tabKey}>{tabs[tabKey].title}</Tab>))}</TabList>
-            <IconButton icon={<FaLink/>} variant="link" as={Link} to={`#${tabKeys[tabIndex]}`} size="lg" color="inherit" />
+            <TabList flexGrow="1">
+              {tabKeys.map(tabKey => (<Tab key={tabKey}>{tabs[tabKey].title}</Tab>))}
+            </TabList>
+            <IconButton
+              icon={<FaLink />}
+              variant="link"
+              as={Link}
+              to={`#${tabKeys[tabIndex]}`}
+              size="lg"
+              color="inherit"
+            />
           </Flex>
           <TabPanels>
             {tabKeys.map(tabKey => <TabPanel key={tabKey}>{tabs[tabKey].element}</TabPanel>)}
