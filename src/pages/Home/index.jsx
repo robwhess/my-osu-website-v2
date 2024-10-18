@@ -7,7 +7,7 @@ import {
   VStack, Flex,
   Image,
   Tabs, TabList, Tab, TabPanels, TabPanel,
-  IconButton,
+  IconButton
 } from '@chakra-ui/react'
 import { useLocation, Link } from 'react-router-dom'
 import { FaLink } from 'react-icons/fa6'
