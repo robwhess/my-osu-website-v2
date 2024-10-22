@@ -1,34 +1,18 @@
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import {
   Stack,
   Alert, AlertIcon, AlertTitle, AlertDescription
 } from '@chakra-ui/react'
 
+import { OFFICE_HOURS } from '@/lib/apollo/queries'
+
 import EventCard from '@/components/EventCard'
 
-const officeHoursQuery = gql`
-  query {
-    hoursCollection(filter: {
-        personId: {eq: 1}
-        type: {eq: office}
-    }) {
-        edges {
-            node {
-                id
-                day
-                start
-                end
-                location
-                videoconferenceLink
-                extraInfo
-            }
-        }
-    }
-  }
-`
-
 export default function OfficeHours() {
-  const { data, loading, error } = useQuery(officeHoursQuery)
+  const { data, loading, error } = useQuery(OFFICE_HOURS, {
+    fetchPolicy: 'cache-only',
+    variables: { personId: 1 }
+  })
   return (
     <>
       {error && (

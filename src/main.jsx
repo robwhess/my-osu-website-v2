@@ -11,6 +11,8 @@ import Home from '@/pages/Home'
 import Courses from '@/pages/Courses'
 import Course from '@/pages/Course'
 
+import { loader as homePageLoader } from '@/pages/Home/loaders'
+
 import theme from '@/theme'
 
 import pkg from '../package.json'
@@ -26,7 +28,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { index: true, element: <Home /> },
+      {
+        index: true,
+        element: <Home />,
+        loader: homePageLoader
+      },
       {
         path: "courses",
         children: [

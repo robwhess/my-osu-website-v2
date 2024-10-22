@@ -1,6 +1,7 @@
 /*
  * Home page.
  */
+
 import { useEffect, useState } from 'react'
 import {
   Container,
