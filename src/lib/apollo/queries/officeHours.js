@@ -6,8 +6,8 @@ import { gql } from '@apollo/client'
  * @param personId The database ID of the person whose office hours should be
  *   fetched.
  */
-const OFFICE_HOURS = gql`
-  query GetOfficeHours($personId: Int!) {
+export const PERSON_OFFICE_HOURS = gql`
+  query getPersonOfficeHours($personId: Int!) {
     hoursCollection(filter: {
         personId: {eq: $personId}
         type: {eq: office}
@@ -26,5 +26,3 @@ const OFFICE_HOURS = gql`
     }
   }
 `
-
-export default OFFICE_HOURS

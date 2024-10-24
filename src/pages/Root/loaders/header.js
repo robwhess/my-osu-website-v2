@@ -1,5 +1,5 @@
 /*
- * React Router data loader for Rob's office hours.
+ * React Router data loader for course data.
  *
  * The purpose of this loader is to pre-fetch the office hours data and cache
  * it in Apollo's cache.  Apollo's useQuery() hook still should be used in the
@@ -11,11 +11,8 @@
  */
 
 import { client } from '@/lib/apollo'
-import { PERSON_OFFICE_HOURS } from '@/lib/apollo/queries'
+import { COURSES_FOR_NAV } from '@/lib/apollo/queries'
 
-export default async function officeHoursLoader() {
-  return client.query({
-    query: PERSON_OFFICE_HOURS,
-    variables: { personId: 1 }
-  })
+export default async function navCoursesLoader() {
+  return client.query({ query: COURSES_FOR_NAV })
 }

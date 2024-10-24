@@ -3,28 +3,50 @@
  */
 
 import { useRef } from 'react'
+import { useQuery } from '@apollo/client'
 import {
   Heading,
   HStack, VStack, Flex,
   Image,
   IconButton,
   Link as ChakraLink,
-  useDisclosure,
-  Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody
+  Skeleton,
+  Alert, AlertIcon, AlertTitle, AlertDescription,
+  Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody,
+  useDisclosure
 } from '@chakra-ui/react'
 import { Link as ReactRouterLink } from 'react-router-dom'
-import { FaBars } from 'react-icons/fa6'
+import { MdMenu } from 'react-icons/md'
+
+import { COURSES_FOR_NAV } from '@/lib/apollo/queries'
+
+import { terms } from '@/lib/database/strings'
 
 import logo from '@/static/rh-logo-transparent.png'
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const drawerBtnRef = useRef()
+
+  /*
+   * Fetch courses data from database and group courses by term.
+   */
+  const { data: coursesData, loading, error } = useQuery(COURSES_FOR_NAV, {
+    fetchPolicy: 'cache-only'
+  })
+  const coursesByTerm = {};
+  Object.keys(terms).forEach(term => {
+    coursesByTerm[term] = coursesData?.courseCollection?.edges?.filter(edge => (
+      edge.node.terms.includes(term)
+    )) ?? []
+  })
+
   return (
     <>
       <Flex justify="space-between" align="center">
         <IconButton
-          icon={<FaBars />}
+          aria-label="Open navigation drawer"
+          icon={<MdMenu />}
           variant="ghost"
           colorScheme="gray"
           size="lg"
@@ -50,8 +72,24 @@ export default function Header() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerBody>
-            Nav
+          <DrawerBody pt={12}>
+            {error && (
+              <Alert status="error" variant="left-accent">
+                <AlertIcon />
+                <AlertTitle>Error fetching navigation data.</AlertTitle>
+                <AlertDescription>Please try again later.</AlertDescription>
+              </Alert>
+            )}
+            <VStack align="start" spacing={3}>
+              {loading && (
+                <>
+                  <Skeleton width="95%" height="24px" />
+                  <Skeleton width="87%" height="24px" />
+                  <Skeleton width="100%" height="24px" />
+                </>
+              )}
+              {Object.entries(terms).map(([ term, termName ]) => <div key={term}>{termName}</div>)}
+            </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

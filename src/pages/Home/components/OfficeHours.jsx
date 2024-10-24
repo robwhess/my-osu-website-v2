@@ -4,12 +4,12 @@ import {
   Alert, AlertIcon, AlertTitle, AlertDescription
 } from '@chakra-ui/react'
 
-import { OFFICE_HOURS } from '@/lib/apollo/queries'
+import { PERSON_OFFICE_HOURS } from '@/lib/apollo/queries'
 
 import EventCard from '@/components/EventCard'
 
 export default function OfficeHours() {
-  const { data, loading, error } = useQuery(OFFICE_HOURS, {
+  const { data: officeHoursData, loading, error } = useQuery(PERSON_OFFICE_HOURS, {
     fetchPolicy: 'cache-only',
     variables: { personId: 1 }
   })
@@ -24,11 +24,9 @@ export default function OfficeHours() {
       )}
       <Stack direction={["column", "column", "row"]} spacing={3}>
         {loading && <EventCard skeleton />}
-        {data && data?.hoursCollection?.edges && (
-          data.hoursCollection.edges.map(node => (
-            <EventCard key={node.node.id} {...node.node} />
-          ))
-        )}
+        {officeHoursData?.hoursCollection?.edges?.map(edge => (
+          <EventCard key={edge.node.id} {...edge.node} />
+        ))}
       </Stack>
     </>
   )

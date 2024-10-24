@@ -11,6 +11,7 @@ import Home from '@/pages/Home'
 import Courses from '@/pages/Courses'
 import Course from '@/pages/Course'
 
+import { loader as rootLoader } from '@/pages/Root/loaders'
 import { loader as homePageLoader } from '@/pages/Home/loaders'
 
 import theme from '@/theme'
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    loader: rootLoader,
     children: [
       {
         index: true,
