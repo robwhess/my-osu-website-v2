@@ -12,7 +12,8 @@ import {
   Link as ChakraLink,
   Skeleton,
   Alert, AlertIcon, AlertTitle, AlertDescription,
-  Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody,
+  Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody,
+  Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon,
   useDisclosure
 } from '@chakra-ui/react'
 import { Link as ReactRouterLink } from 'react-router-dom'
@@ -72,7 +73,12 @@ export default function Header() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerBody pt={12}>
+          <DrawerHeader>
+            <ChakraLink as={ReactRouterLink} to="/" onClick={onClose}>
+              <Image boxSize="50px" src={logo} alt="RH Logo" />
+            </ChakraLink>
+          </DrawerHeader>
+          <DrawerBody>
             {error && (
               <Alert status="error" variant="left-accent">
                 <AlertIcon />
@@ -80,16 +86,50 @@ export default function Header() {
                 <AlertDescription>Please try again later.</AlertDescription>
               </Alert>
             )}
-            <VStack align="start" spacing={3}>
-              {loading && (
-                <>
-                  <Skeleton width="95%" height="24px" />
-                  <Skeleton width="87%" height="24px" />
-                  <Skeleton width="100%" height="24px" />
-                </>
-              )}
-              {Object.entries(terms).map(([ term, termName ]) => <div key={term}>{termName}</div>)}
-            </VStack>
+            {loading ? (
+              <VStack align="start" spacing={3}>
+                <Skeleton width="95%" height="24px" />
+                <Skeleton width="87%" height="24px" />
+                <Skeleton width="100%" height="24px" />
+              </VStack>
+            ) : (
+              <>
+                {/*
+                  * Main part of drawer body is an accordion in which links to
+                  * my courses are organized by term.
+                  */}
+                <Heading as="h2" fontWeight="semibold" pb={2}>Courses</Heading>
+                <Accordion as="nav" allowMultiple defaultIndex={[0]}>
+                  {Object.entries(terms).map(([ term, termName ]) => (
+                    <AccordionItem key={term}>
+                      <AccordionButton>
+                        <AccordionIcon />
+                        <Heading as="h3" size="lg" flex="1" textAlign="left" fontWeight="medium" pl={2}>{termName}</Heading>
+                      </AccordionButton>
+                      <AccordionPanel pb={2} pt={0}>
+                        <VStack align="start" pl={6} spacing={0}>
+                          {coursesByTerm[term].map(course => (
+                            <ChakraLink
+                              as={ReactRouterLink}
+                              key={course.node.id}
+                              onClick={onClose}
+                              to={`/courses/${course.node.id}`}
+                              color="inherit"
+                              width="100%"
+                              p={2}
+                              pl={3}
+                              _hover={{ textDecor: "none", bg: "brand.50" }}
+                            >
+                              <Heading as="h4" size="md" fontWeight="thin">{course.node.number}</Heading>
+                            </ChakraLink>
+                          ))}
+                        </VStack>
+                      </AccordionPanel>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </>
+            )}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
