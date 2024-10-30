@@ -11,8 +11,8 @@ import Home from '@/pages/Home'
 import Courses from '@/pages/Courses'
 import Course from '@/pages/Course'
 
-import { loader as rootLoader } from '@/pages/Root/loaders'
-import { loader as homePageLoader } from '@/pages/Home/loaders'
+import rootLoader from '@/pages/Root/loader'
+import homePageLoader from '@/pages/Home/loader'
 
 import theme from '@/theme'
 
