@@ -6,13 +6,10 @@ import { ApolloProvider } from '@apollo/client'
 
 import { client as apolloClient } from '@/lib/apollo'
 
-import Root from '@/pages/Root'
-import Home from '@/pages/Home'
+import Root, { loader as rootLoader } from '@/pages/Root'
+import Home, { loader as homePageLoader } from '@/pages/Home'
 import Courses from '@/pages/Courses'
 import Course from '@/pages/Course'
-
-import rootLoader from '@/pages/Root/loader'
-import homePageLoader from '@/pages/Home/loader'
 
 import theme from '@/theme'
 
