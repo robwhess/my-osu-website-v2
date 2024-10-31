@@ -101,13 +101,13 @@ export default function Header() {
                 <Heading as="h2" fontWeight="semibold" pb={2}>Courses</Heading>
                 <Accordion as="nav" allowMultiple defaultIndex={[0]}>
                   {Object.entries(terms).map(([ term, termName ]) => (
-                    <AccordionItem key={term}>
-                      <AccordionButton>
+                    <AccordionItem key={term} border={0}>
+                      <AccordionButton px={1}>
                         <AccordionIcon />
                         <Heading as="h3" size="lg" flex="1" textAlign="left" fontWeight="medium" pl={2}>{termName}</Heading>
                       </AccordionButton>
-                      <AccordionPanel pb={2} pt={0}>
-                        <VStack align="start" pl={6} spacing={0}>
+                      <AccordionPanel py={0}>
+                        <VStack align="start" spacing={0}>
                           {coursesByTerm[term].map(course => (
                             <ChakraLink
                               as={ReactRouterLink}
