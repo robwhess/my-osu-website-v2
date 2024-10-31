@@ -11,8 +11,8 @@
  */
 
 import { client } from '@/lib/apollo'
-import { COURSES_FOR_NAV } from '@/lib/apollo/queries'
+import { NAV_COURSES } from '@/lib/apollo/queries'
 
 export default async function navCoursesLoader() {
-  return client.query({ query: COURSES_FOR_NAV })
+  return client.query({ query: NAV_COURSES })
 }

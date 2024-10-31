@@ -19,7 +19,7 @@ import {
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { MdMenu } from 'react-icons/md'
 
-import { COURSES_FOR_NAV } from '@/lib/apollo/queries'
+import { NAV_COURSES } from '@/lib/apollo/queries'
 
 import { terms } from '@/lib/database/strings'
 
@@ -32,7 +32,7 @@ export default function Header() {
   /*
    * Fetch courses data from database and group courses by term.
    */
-  const { data: coursesData, loading, error } = useQuery(COURSES_FOR_NAV, {
+  const { data: coursesData, loading, error } = useQuery(NAV_COURSES, {
     fetchPolicy: 'cache-only'
   })
   const coursesByTerm = {};

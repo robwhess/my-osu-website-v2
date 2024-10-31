@@ -9,7 +9,7 @@ import { client as apolloClient } from '@/lib/apollo'
 import Root, { loader as rootLoader } from '@/pages/Root'
 import Home, { loader as homePageLoader } from '@/pages/Home'
 import Courses from '@/pages/Courses'
-import Course from '@/pages/Course'
+import Course, { loader as coursePageLoader } from '@/pages/Course'
 
 import theme from '@/theme'
 
@@ -36,7 +36,11 @@ const router = createBrowserRouter([
         path: "courses",
         children: [
           { index: true, element: <Courses /> },
-          { path: ":course", element: <Course /> }
+          {
+            path: ":course",
+            element: <Course />,
+            loader: coursePageLoader
+          }
         ]
       }
     ]

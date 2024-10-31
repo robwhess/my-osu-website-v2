@@ -1,2 +1,2 @@
-export { PERSON_OFFICE_HOURS } from './officeHours'
-export { COURSES_FOR_NAV } from './courses'
+export * from './officeHours'
+export * from './courses'

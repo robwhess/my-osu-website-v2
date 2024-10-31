@@ -4,7 +4,7 @@ import { gql } from '@apollo/client'
  * GraphQL uery to fetch course number, title, and terms for all courses.
  * Used to populate nav drawer.
  */
-export const COURSES_FOR_NAV = gql`
+export const NAV_COURSES = gql`
   query getAllCourses {
     courseCollection {
       edges {
@@ -13,6 +13,37 @@ export const COURSES_FOR_NAV = gql`
           number
           title
           terms
+        }
+      }
+    }
+  }
+`
+
+/**
+ * Query to fetch information about a specified course for its course page.
+ *
+ * @param id The database ID of the course to fetch.
+ */
+export const COURSE_PAGE_COURSE = gql`
+  query coursePageCourse($id: String!) {
+    courseCollection(filter: {
+      id: {eq: $id}
+    }) {
+      edges {
+        node {
+          id
+          number
+          title
+          description
+          courseTermCollection {
+            edges {
+              node {
+                term
+                year
+                id
+              }
+            }
+          }
         }
       }
     }
