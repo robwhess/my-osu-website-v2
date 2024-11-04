@@ -36,6 +36,11 @@ export default function Header() {
     )) ?? []
   })
 
+  /*
+   * Depending on whether the user is viewin on a smaller screen or a bigger
+   * one (i.e. "medium" or above), show just a hamburger icon in the menu
+   * trigger button or the full word "courses".
+   */
   const menuButton = useBreakpointValue({
     base: <MenuButton
       as={IconButton}

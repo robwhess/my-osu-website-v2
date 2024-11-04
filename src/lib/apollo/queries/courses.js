@@ -35,7 +35,10 @@ export const COURSE_PAGE_COURSE = gql`
           number
           title
           description
-          courseTermCollection {
+          courseTermCollection (orderBy: [
+            { year: DescNullsLast },
+            { term: DescNullsLast }
+          ]) {
             edges {
               node {
                 term
