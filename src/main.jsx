@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { ApolloProvider } from '@apollo/client'
 
@@ -10,6 +10,7 @@ import Root, { loader as rootLoader } from '@/pages/Root'
 import Home, { loader as homePageLoader } from '@/pages/Home'
 import Courses from '@/pages/Courses'
 import Course, { loader as coursePageLoader } from '@/pages/Course'
+import CourseTerm, { loader as courseTermPageLoader } from '@/pages/CourseTerm'
 
 import theme from '@/theme'
 
@@ -38,8 +39,16 @@ const router = createBrowserRouter([
           { index: true, element: <Courses /> },
           {
             path: ":course",
-            element: <Course />,
-            loader: coursePageLoader
+            element: <Outlet />,
+            loader: coursePageLoader,
+            children: [
+              { index: true, element: <Course /> },
+              {
+                path: ":term",
+                element: <CourseTerm />,
+                loader: courseTermPageLoader
+              }
+            ]
           }
         ]
       }

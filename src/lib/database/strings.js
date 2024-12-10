@@ -7,3 +7,9 @@ export const terms = {
   winter: "Winter",
   spring: "Spring"
 }
+
+export const termCodes = {
+  fall: "f",
+  winter: "w",
+  spring: "sp"
+}
