@@ -1,5 +1,11 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
+import {
+  Box,
+  Heading,
+  Text,
+  Alert, AlertIcon, AlertDescription
+} from '@chakra-ui/react'
 
 import { COURSE_PAGE_COURSE } from '@/lib/apollo/queries'
 
@@ -17,6 +23,20 @@ export default function Course() {
     if (currentTerm) {
       return <Navigate to={`${getTermYearCode(currentTerm.term, currentTerm.year)}`} />
     } else {
-      return <div>TODO: handle case where there isn't a current term!</div>
+      return (
+        <Box px={6}>
+          <Heading as="h1" size="md" mt={6}>
+            {courseData?.number} &ndash; {courseData?.title}
+          </Heading>
+          <Text fontSize={["sm", "md"]} color="gray.600">
+            {courseData?.description}
+          </Text>
+
+          <Alert status="warning" variant="left-accent" mt={8}>
+            <AlertIcon />
+            <AlertDescription>There are no recent offerings of this course to display.</AlertDescription>
+          </Alert>
+        </Box>
+      )
     }
 }

@@ -32,6 +32,9 @@ export const COURSE_PAGE_COURSE = gql`
       edges {
         node {
           id
+          number
+          title
+          description
           courseTermCollection (orderBy: [
             { year: DescNullsLast },
             { term: DescNullsLast }

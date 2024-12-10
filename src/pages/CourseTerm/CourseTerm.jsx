@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
-
-import { COURSE_TERM_PAGE_COURSE } from '@/lib/apollo/queries'
 import {
   Box,
   Heading,
   Text,
   Select
 } from '@chakra-ui/react'
+
+import { COURSE_TERM_PAGE_COURSE } from '@/lib/apollo/queries'
 
 import { terms } from '@/lib/database/strings'
 import { getTermYearCode } from '@/lib/database/utils'
