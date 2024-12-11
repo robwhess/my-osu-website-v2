@@ -92,7 +92,7 @@ export default function Header() {
                     fontWeight: "bold",
                     color: "brand.500",
                     _before: {
-                      content: "'▶︎'",
+                      content: "'❯'",
                       mr: 1
                     }
                   }}
