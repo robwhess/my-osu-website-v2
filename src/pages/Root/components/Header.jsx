@@ -13,7 +13,7 @@ import {
   Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider,
   useBreakpointValue
 } from '@chakra-ui/react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ReactRouterLink, NavLink as ReactRouterNavLink } from 'react-router-dom'
 import { MdMenu, MdExpandMore } from 'react-icons/md'
 
 import { NAV_COURSES } from '@/lib/apollo/queries'
@@ -78,16 +78,24 @@ export default function Header() {
           </VStack>
         </ChakraLink>
       </HStack>
-      <Menu>
+      <Menu autoSelect={false}>
         {menuButton}
         <MenuList>
           {Object.entries(terms).map(([ term, termName ], i, array) => (
             <MenuGroup key={term} title={termName}>
               {coursesByTerm[term].map(course => (
                 <MenuItem
-                  as={ReactRouterLink}
+                  as={ReactRouterNavLink}
                   key={course.node.id}
                   to={`/courses/${course.node.id}`}
+                  _activeLink={{
+                    fontWeight: "bold",
+                    color: "brand.500",
+                    _before: {
+                      content: "'▶︎'",
+                      mr: 1
+                    }
+                  }}
                 >
                   {course.node.number}
                 </MenuItem>
