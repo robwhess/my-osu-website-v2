@@ -2,7 +2,7 @@
  * Root layout for React Router setup.
  */
 
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 import Header from './components/Header'
 

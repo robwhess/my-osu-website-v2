@@ -10,7 +10,7 @@ import {
   Tabs, TabList, Tab, TabPanels, TabPanel,
   IconButton
 } from '@chakra-ui/react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router'
 import { FaLink } from 'react-icons/fa6'
 
 import robImg from '@/static/rob.jpg'

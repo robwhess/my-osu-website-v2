@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+import { createBrowserRouter, Outlet } from 'react-router'
+import { RouterProvider } from 'react-router/dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { ApolloProvider } from '@apollo/client'
 

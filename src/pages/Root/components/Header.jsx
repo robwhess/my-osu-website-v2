@@ -13,7 +13,7 @@ import {
   Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider,
   useBreakpointValue
 } from '@chakra-ui/react'
-import { Link as ReactRouterLink, NavLink as ReactRouterNavLink } from 'react-router-dom'
+import { Link as ReactRouterLink, NavLink as ReactRouterNavLink } from 'react-router'
 import { MdMenu, MdExpandMore } from 'react-icons/md'
 
 import { NAV_COURSES } from '@/lib/apollo/queries'
