@@ -10,13 +10,14 @@ import {
 import { COURSE_TERM_PAGE_COURSE } from '@/lib/apollo/queries'
 
 import { terms } from '@/lib/database/strings'
-import { getTermYearCode } from '@/lib/database/utils'
+import { getCourseTermId } from '@/lib/database/utils'
 
 export default function CourseTerm() {
-    const { course, term } = useParams()
+    const { course, termYear } = useParams()
+    const currCourseTerm = getCourseTermId(course, termYear)
     const { data } = useQuery(COURSE_TERM_PAGE_COURSE, {
       fetchPolicy: 'cache-only',
-      variables: { courseId: course, termId: term }
+      variables: { courseId: course, courseTermId: currCourseTerm }
     })
     const courseData = data?.courseCollection?.edges[0]?.node
     const courseTerms = courseData?.courseTermCollection?.edges
@@ -28,13 +29,9 @@ export default function CourseTerm() {
         <Text fontSize={["sm", "md"]} color="gray.600">
           {courseData?.description}
         </Text>
-        <Select mt={4}>
+        <Select mt={4} defaultValue={currCourseTerm}>
           {courseTerms?.map(courseTerm => (
-            <option
-              key={courseTerm.node.id}
-              value={courseTerm.node.id}
-              selected={term === getTermYearCode(courseTerm.node.term, courseTerm.node.year)}
-            >
+            <option key={courseTerm.node.id} value={courseTerm.node.id}>
               {terms[courseTerm.node.term]} {courseTerm.node.year}
             </option>
           ))}

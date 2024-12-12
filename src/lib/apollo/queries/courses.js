@@ -58,9 +58,11 @@ export const COURSE_PAGE_COURSE = gql`
  * its course/term page.
  *
  * @param courseId The database ID of the course to fetch.
+ * @param courseTermId The ID of the course/term (from the course_term table)
+ *   for the course.
  */
 export const COURSE_TERM_PAGE_COURSE = gql`
-  query coursePageCourse($courseId: String!) {
+  query coursePageCourse($courseId: String!, $courseTermId: String!) {
     courseCollection(filter: {
       id: {eq: $courseId}
     }) {
@@ -82,6 +84,22 @@ export const COURSE_TERM_PAGE_COURSE = gql`
               }
             }
           }
+        }
+      }
+    }
+    syllabusCollection(filter: {
+      or: [
+        { courseTerm: { eq: $courseTermId } },
+        { courseTerm: { is: NULL } }
+      ]
+    }) {
+      edges {
+        node {
+          id
+          title
+          content
+          category
+          order
         }
       }
     }

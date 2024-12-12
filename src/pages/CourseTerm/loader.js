@@ -13,9 +13,12 @@
 import { client } from '@/lib/apollo'
 import { COURSE_TERM_PAGE_COURSE } from '@/lib/apollo/queries'
 
+import { getCourseTermId } from '@/lib/database/utils'
+
 export default async function coursePageLoader({ params }) {
+  const courseTerm = getCourseTermId(params.course, params.termYear)
   return client.query({
     query: COURSE_TERM_PAGE_COURSE,
-    variables: { courseId: params.course, termId: params.term }
+    variables: { courseId: params.course, courseTermId: courseTerm }
   })
 }
