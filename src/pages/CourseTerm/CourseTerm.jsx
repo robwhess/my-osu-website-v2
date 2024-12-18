@@ -24,7 +24,11 @@ export default function CourseTerm() {
   const courseTerms = courseData?.courseTermCollection?.edges
   return (
     <Flex
-      direction={{base: "column", md: "row"}} align={{base: "stretch", md: "center"}} px={6} mt={6}>
+      direction={{ base: "column", md: "row" }}
+      align={{ base: "stretch", md: "center" }}
+      mx={6}
+      mt={6}
+    >
       <Box>
         <Heading as="h1" size="md">
           {courseData?.number} &ndash; {courseData?.title}
@@ -34,7 +38,7 @@ export default function CourseTerm() {
         </Text>
       </Box>
       <Spacer />
-      <Box minWidth="256px" mt={{base: 4, md: 0}}>
+      <Box minWidth="xs" mt={{ base: 4, md: 0 }}>
         <Select defaultValue={currCourseTerm}>
           {courseTerms?.map(courseTerm => (
             <option key={courseTerm.node.id} value={courseTerm.node.id}>

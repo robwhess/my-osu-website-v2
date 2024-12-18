@@ -24,7 +24,7 @@ export default function Course() {
     return <Navigate to={`${getTermYearCode(currentTerm.term, currentTerm.year)}`} />
   } else {
     return (
-      <Box px={6}>
+      <Box mx={6}>
         <Heading as="h1" size="md" mt={6}>
           {courseData?.number} &ndash; {courseData?.title}
         </Heading>
