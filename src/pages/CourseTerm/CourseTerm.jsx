@@ -2,6 +2,7 @@ import { useParams } from 'react-router'
 import { useQuery } from '@apollo/client'
 import {
   Box,
+  Flex, Spacer,
   Heading,
   Text,
   Select
@@ -22,20 +23,26 @@ export default function CourseTerm() {
   const courseData = data?.courseCollection?.edges[0]?.node
   const courseTerms = courseData?.courseTermCollection?.edges
   return (
-    <Box px={6}>
-      <Heading as="h1" size="md" mt={6}>
-        {courseData?.number} &ndash; {courseData?.title}
-      </Heading>
-      <Text fontSize={["sm", "md"]} color="gray.600">
-        {courseData?.description}
-      </Text>
-      <Select mt={4} defaultValue={currCourseTerm}>
-        {courseTerms?.map(courseTerm => (
-          <option key={courseTerm.node.id} value={courseTerm.node.id}>
-            {terms[courseTerm.node.term]} {courseTerm.node.year}
-          </option>
-        ))}
-      </Select>
-    </Box>
+    <Flex
+      direction={{base: "column", md: "row"}} align={{base: "stretch", md: "center"}} px={6} mt={6}>
+      <Box>
+        <Heading as="h1" size="md">
+          {courseData?.number} &ndash; {courseData?.title}
+        </Heading>
+        <Text fontSize={["sm", "md"]} color="gray.600">
+          {courseData?.description}
+        </Text>
+      </Box>
+      <Spacer />
+      <Box minWidth="256px" mt={{base: 4, md: 0}}>
+        <Select defaultValue={currCourseTerm}>
+          {courseTerms?.map(courseTerm => (
+            <option key={courseTerm.node.id} value={courseTerm.node.id}>
+              {terms[courseTerm.node.term]} {courseTerm.node.year}
+            </option>
+          ))}
+        </Select>
+      </Box>
+    </Flex>
   )
 }
