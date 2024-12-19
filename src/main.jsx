@@ -40,10 +40,9 @@ const router = createBrowserRouter([
           { index: true, element: <Courses /> },
           {
             path: ":course",
-            element: <Outlet />,
+            element: <Course />,
             loader: coursePageLoader,
             children: [
-              { index: true, element: <Course /> },
               {
                 path: ":termYear",
                 element: <CourseTerm />,
