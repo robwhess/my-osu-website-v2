@@ -14,8 +14,8 @@ export default function Header() {
                     href="/"
                     className="flex flex-col items-start text-inherit no-underline hover:no-underline"
                 >
-                    <h1 className="text-4xl font-extralight leading-none">Rob Hess</h1>
-                    <h2 className="text-sm font-extralight leading-tight sm:text-base">Oregon State University</h2>
+                    <h1 className="text-4xl leading-none">Rob Hess</h1>
+                    <h2 className="text-sm leading-tight sm:text-base">Oregon State University</h2>
                 </Link>
             </header>
         </div>
