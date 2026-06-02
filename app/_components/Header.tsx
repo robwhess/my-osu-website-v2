@@ -1,14 +1,26 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import logo from "@/app/_static/rh-logo-transparent.png"
+import logo from "@/app/_static/rh-logo.png"
+import logoTransparent from "@/app/_static/rh-logo-transparent.png"
 
 export default function Header() {
     return (
         <div className="flex items-center justify-between gap-4">
             <header className="mx-2 my-4 flex items-center justify-end gap-3">
                 <Link href="/" className="shrink-0">
-                    <Image className="size-18 sm:size-20" src={logo} alt="RH Logo" />
+                    <Image
+                        src={logoTransparent}
+                        alt="RH Logo"
+                        loading="eager"
+                        className="size-18 sm:size-20 dark:hidden"
+                    />
+                    <Image
+                        src={logo}
+                        alt="RH Logo"
+                        loading="eager"
+                        className="size-18 sm:size-20 hidden dark:block"
+                    />
                 </Link>
                 <Link
                     href="/"

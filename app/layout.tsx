@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
-import { Raleway, Cascadia_Code } from "next/font/google"
+import { Raleway, Inconsolata } from "next/font/google"
 
-const raleway = Raleway({
-  variable: "--font-raleway",
+const ralewaySans = Raleway({
+  variable: "--font-raleway-sans",
   subsets: ["latin"],
 })
 
-const cascadiaCode = Cascadia_Code({
-  variable: "--font-cascadia-code",
+const inconsolataMono = Inconsolata({
+  variable: "--font-inconsolata-mono",
   subsets: ["latin"],
 })
 
@@ -27,7 +27,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${raleway.variable} ${cascadiaCode.variable} h-full antialiased`}
+            className={`${ralewaySans.variable} ${inconsolataMono.variable} h-full antialiased`}
         >
             <body className="min-h-full">
                 <div className="w-full max-w-7xl mx-auto">

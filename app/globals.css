@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-    themes: bumblebee --default/*, halloween --prefersdark*/;
+    themes: bumblebee --default, halloween --prefersdark;
 }
 
 @theme inline {
-  --font-sans: var(--font-raleway);
-  --font-mono: var(--font-cascadia-code);
+  --font-sans: var(--font-raleway-sans);
+  --font-mono: var(--font-inconsolata-mono);
 }
