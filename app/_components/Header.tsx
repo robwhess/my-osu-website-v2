@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import logo from "@/app/_static/rh-logo.png"
+// import logo from "@/app/_static/rh-logo.png"
 import logoTransparent from "@/app/_static/rh-logo-transparent.png"
 
 export default function Header() {
@@ -13,14 +13,14 @@ export default function Header() {
                         src={logoTransparent}
                         alt="RH Logo"
                         loading="eager"
-                        className="size-18 sm:size-20 dark:hidden"
+                        className="size-18 sm:size-20"
                     />
-                    <Image
+                    {/* <Image
                         src={logo}
                         alt="RH Logo"
                         loading="eager"
                         className="size-18 sm:size-20 hidden dark:block"
-                    />
+                    /> */}
                 </Link>
                 <Link
                     href="/"
