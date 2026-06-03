@@ -1,7 +1,29 @@
+import Image from "next/image"
+
+import robImg from "@/app/_static/rob.jpg"
+
 export default function Home() {
     return (
         <main>
-            <h1>Hello!</h1>
+            <div className="card lg:card-side text-sm lg:max-w-6xl max-w-2xl mx-2 my-4 lg:my-12">
+                <figure className="flex-3">
+                    <Image className="" src={robImg} alt="Photo of Rob Hess" />
+                </figure>
+                <div className="card-body flex-2">
+                    <p>
+                        Hello!  My name is Rob Hess, and I&apos;m an instructor in Computer Science at Oregon State University.  I mostly teach courses related to web and mobile app development.
+                    </p>
+                    <p className="my-2">
+                        In my past life, I was an engineer on the Yahoo Machine Learning and Vision team, where I got to research, design, and deploy some <a className="link" href="http://code.flickr.net/2014/10/20/introducing-flickr-park-or-bird/">very cool technologies</a> at <a className="link" href="http://code.flickr.net/2014/05/20/computer-vision-at-scale-with-hadoop-and-storm/">massive scale</a>.  While I was at Yahoo, I also spent time working on Flickr&apos;s Front End team where I implemented and deployed <a className="link" href="https://www.flickr.com/search">web</a> <a className="link" href="https://www.flickr.com/explore">pages</a> that millions of people use every day.
+                    </p>
+                    <p className="my-2">
+                        Before Yahoo, I worked at a small computer vision startup named IQ Engines, which <a className="link" href="https://techcrunch.com/2013/08/23/yahoo-acquires-image-recognition-startup-iq-engines/">Yahoo acquired</a>, and long, long ago, I earned <a className="link" href="http://ir.library.oregonstate.edu/xmlui/handle/1957/30348">my PhD</a> right here in the CS department of Oregon State.
+                    </p>
+                    <p>
+                        Through it all, I&apos;ve been and remain an avid baker of bread, tender of gardens, player of games, and lover of cats, while also cycling through a million other hobbies, including taking photos and brewing beer.  Currently, I&apos;m honing my woodworking skills.
+                    </p>
+                </div>
+            </div>
         </main>
     )
 }

@@ -6,8 +6,8 @@ import logoTransparent from "@/app/_static/rh-logo-transparent.png"
 
 export default function Header() {
     return (
-        <div className="flex items-center justify-between gap-4">
-            <header className="mx-2 my-4 flex items-center justify-end gap-3">
+        <header className="flex items-center justify-between gap-4">
+            <div className="mx-2 my-4 flex items-center gap-3">
                 <Link href="/" className="shrink-0">
                     <Image
                         src={logoTransparent}
@@ -24,12 +24,12 @@ export default function Header() {
                 </Link>
                 <Link
                     href="/"
-                    className="flex flex-col items-start text-inherit no-underline hover:no-underline"
+                    className="flex flex-col items-start text-inherit"
                 >
-                    <h1 className="text-4xl leading-none">Rob Hess</h1>
-                    <h2 className="text-sm leading-tight sm:text-base">Oregon State University</h2>
+                    <h1 className="text-5xl">Rob Hess</h1>
+                    <h2 className="ml-1 leading-tight">Oregon State University</h2>
                 </Link>
-            </header>
-        </div>
+            </div>
+        </header>
     )
 }
