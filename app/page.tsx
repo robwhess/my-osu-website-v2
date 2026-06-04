@@ -4,8 +4,8 @@ import robImg from "@/app/_static/rob.jpg"
 
 export default function Home() {
     return (
-        <main>
-            <div className="card lg:card-side text-sm lg:max-w-6xl max-w-2xl mx-2 my-4 lg:my-12">
+        <main className="flex justify-center text-sm lg:max-w-6xl max-w-2xl mx-2 my-8 lg:my-16">
+            <div className="card lg:card-side">
                 <figure className="flex-3">
                     <Image className="" src={robImg} alt="Photo of Rob Hess" />
                 </figure>

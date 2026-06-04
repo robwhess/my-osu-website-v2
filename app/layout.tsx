@@ -31,11 +31,11 @@ export default function RootLayout({
             className={`${ralewaySans.variable} ${inconsolataMono.variable} h-full antialiased`}
         >
             <body className="min-h-full">
-                <div className="w-full min-h-dvh max-w-7xl mx-auto flex flex-col">
+                <div className="w-full max-w-7xl mx-auto flex flex-col">
                     <Header />
                     {children}
-                    <Footer />
                 </div>
+                <Footer />
             </body>
         </html>
     )

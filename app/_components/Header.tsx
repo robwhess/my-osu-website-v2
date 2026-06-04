@@ -6,8 +6,8 @@ import logoTransparent from "@/app/_static/rh-logo-transparent.png"
 
 export default function Header() {
     return (
-        <header className="flex items-center justify-between gap-4">
-            <div className="mx-2 my-4 flex items-center gap-3">
+        <header className="mt-4 mx-2 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
                 <Link href="/" className="shrink-0">
                     <Image
                         src={logoTransparent}
