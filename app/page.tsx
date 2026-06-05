@@ -4,12 +4,12 @@ import robImg from "@/app/_static/rob.jpg"
 
 export default function Home() {
     return (
-        <main className="flex justify-center text-sm lg:max-w-6xl max-w-2xl mx-2 my-8 lg:my-16">
-            <div className="card lg:card-side">
-                <figure className="flex-3">
-                    <Image className="" src={robImg} alt="Photo of Rob Hess" />
+        <main className="flex justify-center">
+            <div className="card card-lg lg:card-side lg:max-w-6xl max-w-2xl mx-2 my-8 lg:my-12">
+                <figure className="flex-1">
+                    <Image src={robImg} alt="Photo of Rob Hess" loading="eager" />
                 </figure>
-                <div className="card-body flex-2">
+                <div className="card-body flex-1">
                     <p>
                         Hello!  My name is Rob Hess, and I&apos;m an instructor in Computer Science at Oregon State University.  I mostly teach courses related to web and mobile app development.
                     </p>
