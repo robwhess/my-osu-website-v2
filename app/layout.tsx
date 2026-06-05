@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import { Raleway, Inconsolata } from "next/font/google"
 
-import Header from "@/app/_components/Header"
-import Footer from "@/app/_components/Footer"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 import "./globals.css"
 

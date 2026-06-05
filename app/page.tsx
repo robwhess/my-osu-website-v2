@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import robImg from "@/app/_static/rob.jpg"
+import robImg from "@/static/rob.jpg"
 
 export default function Home() {
     return (

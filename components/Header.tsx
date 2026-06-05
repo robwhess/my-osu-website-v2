@@ -1,8 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 
-// import logo from "@/app/_static/rh-logo.png"
-import logoTransparent from "@/app/_static/rh-logo-transparent.png"
+// import logo from "@/static/rh-logo.png"
+import logoTransparent from "@/static/rh-logo-transparent.png"
 
 export default function Header() {
     return (
