@@ -30,7 +30,7 @@ export default function RootLayout({
             lang="en"
             className={`${ralewaySans.variable} ${inconsolataMono.variable} h-full antialiased`}
         >
-            <body className="min-h-full flex flex-col justify-between">
+            <body className="min-h-full flex flex-col justify-between bg-base-200">
                 <div className="w-full max-w-7xl mx-auto flex flex-col">
                     <Header />
                     {children}

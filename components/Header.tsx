@@ -1,12 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
 
-// import logo from "@/static/rh-logo.png"
 import logoTransparent from "@/static/rh-logo-transparent.png"
 
 export default function Header() {
     return (
-        <header className="mt-4 mx-2 flex items-center justify-between gap-4">
+        <header className="mt-4 mx-2 flex items-end justify-between gap-4">
             <div className="flex items-center gap-3">
                 <Link href="/" className="shrink-0">
                     <Image
@@ -15,12 +14,6 @@ export default function Header() {
                         loading="eager"
                         className="size-18 sm:size-20"
                     />
-                    {/* <Image
-                        src={logo}
-                        alt="RH Logo"
-                        loading="eager"
-                        className="size-18 sm:size-20 hidden dark:block"
-                    /> */}
                 </Link>
                 <Link
                     href="/"
@@ -30,6 +23,13 @@ export default function Header() {
                     <h2 className="ml-1 leading-tight">Oregon State University</h2>
                 </Link>
             </div>
+            <nav className="text-xl font-medium">
+                <ul className="flex gap-8">
+                    <li>
+                        <Link href="/hours" className="link link-hover">Office Hours</Link>
+                    </li>
+                </ul>
+            </nav>
         </header>
     )
 }
