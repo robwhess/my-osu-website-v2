@@ -1,3 +1,10 @@
+/*
+ * A card component for displaying information about an event.  Input
+ * props are strings, and a few of them are flexible, e.g. `day` could be a
+ * day of the week like "Wednesday", or it could be a specific date like
+ * "June 10, 2026".
+ */
+
 import dayjs from "dayjs"
 import CustomParseFormat from "dayjs/plugin/customParseFormat"
 import { MdAccessTime, MdOutlineInfo, MdOutlineLocationOn, MdVideocam } from "react-icons/md"
