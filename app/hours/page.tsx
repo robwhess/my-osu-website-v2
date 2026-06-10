@@ -17,8 +17,6 @@ export default async function Hours() {
         console.error(error)
     }
 
-    console.log(data)
-
     return (
         <main className="flex flex-col items-center mx-2 my-12">
             <h1 className="mb-8 text-3xl lg:text-4xl font-medium">Rob&apos;s Office Hours</h1>
