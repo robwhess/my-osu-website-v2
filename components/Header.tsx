@@ -1,11 +1,12 @@
 "use client"
 
+import { useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { LiaBarsSolid } from "react-icons/lia"
 
 import logoTransparent from "@/static/rh-logo-transparent.png"
-import { useRef } from "react"
 
 const navLinks = [
     {
@@ -20,6 +21,7 @@ const navLinks = [
 
 export default function Header() {
     const checkboxRef = useRef<HTMLInputElement>(null)
+    const pathname = usePathname()
     return (
         <div className="drawer drawer-end">
             <input type="checkbox" id="nav-drawer-toggle" className="drawer-toggle" ref={checkboxRef} />
@@ -52,7 +54,7 @@ export default function Header() {
                     <nav className="hidden md:block text-xl font-medium">
                         <ul className="menu menu-xl menu-horizontal">
                             {navLinks.map(link => (
-                                <li key={link.href}>
+                                <li key={link.href} className={`${pathname === link.href ? "border-l-2 md:border-l-0 md:border-b-2" : ""}`}>
                                     <Link href={link.href} className="rounded-none">{link.title}</Link>
                                 </li>
                             ))}
@@ -64,7 +66,7 @@ export default function Header() {
                 <label htmlFor="nav-drawer-toggle" aria-label="Close navigation drawer" className="drawer-overlay"></label>
                 <ul className="menu menu-lg min-h-full w-80 p-4 bg-base-100">
                     {navLinks.map(link => (
-                        <li key={link.href}>
+                        <li key={link.href} className={`${pathname === link.href ? "border-l-2 md:border-l-0 md:border-b-2" : ""}`}>
                             <Link
                                 href={link.href}
                                 className="rounded-none"
