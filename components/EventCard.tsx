@@ -21,10 +21,10 @@ export default function EventCard({
 } : {
     day: string,
     start: string,
-    end?: string,
-    location?: string,
-    videoConferenceLink?: string,
-    extraInfo?: string
+    end: string | null,
+    location: string | null,
+    videoConferenceLink: string | null,
+    extraInfo: string | null
 }) {
     const startTime = dayjs(start, "HH:mm:ss").format("h:mm a")
     const endTime = end && dayjs(end, "HH:mm:ss").format("h:mm a")
