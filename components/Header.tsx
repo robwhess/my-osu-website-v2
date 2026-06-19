@@ -26,7 +26,7 @@ export default function Header() {
         <div className="drawer drawer-end">
             <input type="checkbox" id="nav-drawer-toggle" className="drawer-toggle" ref={checkboxRef} />
             <div className="drawer-content">
-                <header className="mt-4 mx-2 flex items-center justify-between gap-4">
+                <header className="py-4 px-2 border-b border-b-neutral-content flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
                         <Link href="/" className="shrink-0">
                             <Image
