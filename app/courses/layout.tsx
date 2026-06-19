@@ -18,7 +18,7 @@ export default async function CoursesLayout({
     }
 
     return (
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col">
             <CourseListMenu courses={data} />
             {children}
         </div>
