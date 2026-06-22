@@ -30,40 +30,38 @@ export default function EventCard({
     const endTime = end && dayjs(end, "HH:mm:ss").format("h:mm a")
 
     return (
-        <div className="card bg-base-100 shadow-sm">
+        <div className="card bg-base-100 shadow-sm rounded-xs">
             <div className="card-body gap-1">
-                <h3 className="card-title text-2xl font-bold">
+                <h3 className="card-title text-xl md:text-2xl font-bold">
                     {day}
-                    {extraInfo && (
-                        <div className="tooltip">
-                            <div role="tooltip" className="tooltip-content">
-                                {extraInfo}
-                            </div>
-                            <button className="btn btn-ghost btn-circle text-xl"><MdOutlineInfo /></button>
-                        </div>
-                    )}
                 </h3>
-                <div className="flex items-center gap-2 text-gray-500">
-                    <p className="grow-0 text-xl"><MdAccessTime /></p>
-                    <p className="text-xl">{startTime}{endTime && <> &ndash; {endTime}</>}</p>
+                <div className="flex items-center gap-2 text-lg md:text-xl">
+                    <p className="grow-0"><MdAccessTime /></p>
+                    <p>{startTime}{endTime && <> &ndash; {endTime}</>}</p>
                 </div>
                 <div className="flex items-center gap-4">
                     {location && (
-                        <div className="flex items-center gap-2">
-                            <p className="grow-0 text-xl"><MdOutlineLocationOn /></p>
-                            <p className="text-xl">{location}</p>
+                        <div className="flex items-center gap-2 text-lg md:text-xl">
+                            <p className="grow-0"><MdOutlineLocationOn /></p>
+                            <p>{location}</p>
                         </div>
-                        )}
-                        {videoConferenceLink && (
-                            <a
-                                href={videoConferenceLink}
-                                className="btn btn-outline btn-sm"
-                                target="_blank" rel="noopener noreferrer"
-                            >
-                                <span className="text-base"><MdVideocam /></span> Join
-                            </a>
-                        )}
+                    )}
+                    {videoConferenceLink && (
+                        <a
+                            href={videoConferenceLink}
+                            className="btn btn-outline btn-sm"
+                            target="_blank" rel="noopener noreferrer"
+                        >
+                            <span className="text-base"><MdVideocam /></span> Join
+                        </a>
+                    )}
                 </div>
+                {extraInfo && (
+                    <div className="flex items-center gap-2 text-gray-400">
+                        <p className="grow-0 ml-0.5"><MdOutlineInfo /></p>
+                        <p>{extraInfo}</p>
+                    </div>
+                )}
             </div>
         </div>
     )
