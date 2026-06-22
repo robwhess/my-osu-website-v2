@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 import { HiMenuAlt1 } from "react-icons/hi"
 import { MdChevronRight } from "react-icons/md"
 
@@ -16,14 +17,22 @@ export default function CourseListNav({
     courses: Course[] | null
 }>) {
     const [ menuIsOpen, setMenuIsOpen ] = useState(false)
+    const { course } = useParams<{ course: string }>()
+    const selectedCourse = course && courses?.find(c => c.id === course)
+
     const coursesByTerm = groupCoursesByTerm(courses ?? [])
     const courseMenuEntries = Object.entries(termNames).map(([ term, termName ]) => (
         <li key={term}>
             <h3 className="my-2 uppercase text-sm font-semibold text-gray-500">{termName}</h3>
             <ul>
-                {coursesByTerm[term as Term].map(course => (
-                    <li key={course.id} className="ml-2 px-3 py-1 border-l border-l-neutral-content font-semibold">
-                        <Link href={`courses/${course.id}`}>{course.number}</Link>
+                {coursesByTerm[term as Term].map(c => (
+                    <li key={c.id} className="ml-2 px-3 py-1 border-l border-l-neutral-content font-semibold">
+                        <Link
+                            href={`/courses/${c.id}`}
+                            onNavigate={() => setMenuIsOpen(false)}
+                        >
+                            {c.number}
+                        </Link>
                     </li>
                 ))}
             </ul>
@@ -41,7 +50,11 @@ export default function CourseListNav({
                 </button>
                 <p>Course</p>
                 <p className="text-xl"><MdChevronRight /></p>
-                <p className="text-gray-400">None selected</p>
+                {selectedCourse ? (
+                    <p>{selectedCourse.number}</p>
+                ) : (
+                    <p className="text-gray-400">None selected</p>
+                )}
             </div>
             <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:w-full max-md:bg-base-200 max-md:shadow-xs md:border-r md:border-r-neutral-300`}>
                 <ul>
