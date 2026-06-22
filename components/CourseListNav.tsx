@@ -26,7 +26,10 @@ export default function CourseListNav({
             <h3 className="my-2 uppercase text-sm font-semibold text-gray-500">{termName}</h3>
             <ul>
                 {coursesByTerm[term as Term].map(c => (
-                    <li key={c.id} className="ml-2 px-3 py-1 border-l border-l-neutral-content font-semibold">
+                    <li
+                        key={c.id}
+                        className={`ml-2 px-3 py-1 border-l relative font-semibold ${c.id === course ? "border-l-2 border-base-content" : "border-neutral-content left-px"}`}
+                    >
                         <Link
                             href={`/courses/${c.id}`}
                             onNavigate={() => setMenuIsOpen(false)}

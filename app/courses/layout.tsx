@@ -11,6 +11,7 @@ export default async function CoursesLayout({
     const { data, error } = await supabase
         .from("course")
         .select()
+        .order("number", { ascending: true })
 
     if (error) {
         console.error(error)
