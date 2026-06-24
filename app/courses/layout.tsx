@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 
-import CourseListMenu from "@/components/CourseListNav"
+import CourseListNav from "@/components/CourseListNav"
 
 export default async function CoursesLayout({
     children,
@@ -20,7 +20,7 @@ export default async function CoursesLayout({
 
     return (
         <div className="min-h-dvh flex flex-col md:flex-row items-stretch">
-            <CourseListMenu courses={data} />
+            <CourseListNav courses={data} />
             {children}
         </div>
     )

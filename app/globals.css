@@ -1,6 +1,44 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-    themes: bumblebee --default;
+@plugin "daisyui";
+
+/*
+ * Color theme based on OSU color palette:
+ *
+ *   https://communications.oregonstate.edu/brand-guide/colors
+ */
+@plugin "daisyui/theme" {
+  name: "rh";
+  default: true;
+  prefersdark: true;
+  color-scheme: "light";
+  --color-base-100: oklch(99.3% 0.002 17.194);
+  --color-base-200: oklch(97.2% 0.002 17.194);
+  --color-base-300: oklch(90.5% 0.005 34.309);
+  --color-base-content: oklch(21% 0.006 56.043);
+  --color-primary: oklch(58.7% 0.196 36.159);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(68% 0.138 63.285);
+  --color-secondary-content: oklch(0% 0 0);
+  --color-accent: oklch(40.1% 0.064 202.514);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(36.7% 0.006 48.540);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(49.1% 0.099 230.584);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(52.2% 0.101 138.640);
+  --color-success-content: oklch(100% 0 0);
+  --color-warning: oklch(82.2% 0.171 78.982);
+  --color-warning-content: oklch(0% 0 0);
+  --color-error: oklch(57% 0.245 27.325);
+  --color-error-content: oklch(100% 0 0);
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 1;
 }
 
 @theme inline {

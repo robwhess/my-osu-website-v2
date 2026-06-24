@@ -23,12 +23,12 @@ export default function CourseListNav({
     const coursesByTerm = groupCoursesByTerm(courses ?? [])
     const courseMenuEntries = Object.entries(termNames).map(([ term, termName ]) => (
         <li key={term}>
-            <h3 className="my-2 uppercase text-sm font-semibold text-gray-500">{termName}</h3>
+            <h3 className="my-2 uppercase text-sm font-semibold text-gray-600">{termName}</h3>
             <ul>
                 {coursesByTerm[term as Term].map(c => (
                     <li
                         key={c.id}
-                        className={`ml-2 px-3 py-1 border-l relative font-semibold ${c.id === course ? "border-l-2 border-base-content" : "border-neutral-content left-px"}`}
+                        className={`ml-2 px-3 py-1 border-l relative font-semibold ${c.id === course ? "border-l-2 border-primary" : "border-base-300 left-px"}`}
                     >
                         <Link
                             href={`/courses/${c.id}`}
@@ -44,7 +44,7 @@ export default function CourseListNav({
 
     return (
         <div>
-            <div className="md:hidden p-2 border-b border-b-neutral-content flex items-center gap-2 relative">
+            <div className="md:hidden p-2 border-b border-b-base-300 flex items-center gap-2 relative">
                 <button
                     className="btn btn-ghost btn-square text-xl"
                     onClick={() => setMenuIsOpen(prev => !prev)}
@@ -59,7 +59,7 @@ export default function CourseListNav({
                     <p className="text-gray-400">None selected</p>
                 )}
             </div>
-            <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:w-full max-md:bg-base-200 max-md:shadow-xs md:border-r md:border-r-neutral-300`}>
+            <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:w-full max-md:bg-base-200 max-md:shadow-xs md:border-r md:border-r-base-300`}>
                 <ul>
                     {courseMenuEntries}
                 </ul>

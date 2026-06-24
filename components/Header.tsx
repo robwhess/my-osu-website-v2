@@ -27,14 +27,14 @@ export default function Header() {
         <div className="drawer drawer-end">
             <input type="checkbox" id="nav-drawer-toggle" className="drawer-toggle" ref={checkboxRef} />
             <div className="drawer-content">
-                <header className="py-4 px-2 border-b border-b-neutral-content flex items-center justify-between gap-4">
+                <header className="py-4 px-2 border-b border-b-base-300 flex items-end justify-between gap-4">
                     <div className="flex items-center gap-3">
                         <Link href="/" className="shrink-0">
                             <Image
                                 src={logoTransparent}
                                 alt="RH Logo"
                                 loading="eager"
-                                className="size-18 sm:size-20"
+                                className="size-18 md:size-20"
                             />
                         </Link>
                         <Link
@@ -55,7 +55,7 @@ export default function Header() {
                     <nav className="hidden md:block text-xl font-medium">
                         <ul className="menu menu-xl menu-horizontal">
                             {navLinks.map(link => (
-                                <li key={link.href} className={`${pathname.startsWith(link.href) ? "border-b-2 border-base-content" : ""}`}>
+                                <li key={link.href} className={`${pathname.startsWith(link.href) ? "border-b-2 border-primary" : ""}`}>
                                     <Link href={link.href} className="rounded-none">{link.title}</Link>
                                 </li>
                             ))}
@@ -67,7 +67,7 @@ export default function Header() {
                 <label htmlFor="nav-drawer-toggle" aria-label="Close navigation drawer" className="drawer-overlay"></label>
                 <ul className="menu menu-lg min-h-full w-80 p-4 bg-base-100">
                     {navLinks.map(link => (
-                        <li key={link.href} className={`${pathname.startsWith(link.href) ? "border-l-2 border-base-content" : ""}`}>
+                        <li key={link.href} className={`${pathname.startsWith(link.href) ? "border-l-2 border-primary" : ""}`}>
                             <Link
                                 href={link.href}
                                 className="rounded-none"
