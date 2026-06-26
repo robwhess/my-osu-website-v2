@@ -1,12 +1,12 @@
 import { MdErrorOutline } from "react-icons/md"
 
-import { createClient } from "@/lib/supabase/server"
+import { createSupabaseClient } from "@/lib/supabase/createSupabaseClient"
 import EventCard from "@/components/EventCard"
 
 const ROBS_PERSON_ID = 1
 
 export default async function Hours() {
-    const supabase = await createClient()
+    const supabase = await createSupabaseClient()
     const { data, error } = await supabase
         .from("hours")
         .select("id, day, start, end, location, videoConferenceLink:videoconference_link, extraInfo:extra_info")
