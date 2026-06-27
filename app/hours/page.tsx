@@ -1,6 +1,6 @@
 import { MdErrorOutline } from "react-icons/md"
 
-import { createSupabaseClient } from "@/lib/supabase/createSupabaseClient"
+import { createSupabaseClient } from "@/lib/supabase/client"
 import EventCard from "@/components/EventCard"
 
 const ROBS_PERSON_ID = 1

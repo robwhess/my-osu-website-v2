@@ -1,4 +1,4 @@
-import { createSupabaseClient } from "@/lib/supabase/createSupabaseClient"
+import { createSupabaseClient } from "@/lib/supabase/client"
 
 export async function generateStaticParams() {
     const supabase = await createSupabaseClient()
