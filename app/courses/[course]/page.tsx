@@ -1,4 +1,5 @@
 import { createSupabaseClient } from "@/lib/supabase/client"
+import { notFound } from "next/navigation"
 
 export async function generateStaticParams() {
     const supabase = await createSupabaseClient()
@@ -31,6 +32,10 @@ export default async function Course({
     if (error) {
         console.error(error)
         throw error
+    }
+
+    if (!data) {
+        notFound()
     }
 
     return <h1 className="mx-auto my-20">{data?.number || "Course"}</h1>
