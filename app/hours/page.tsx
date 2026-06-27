@@ -5,7 +5,7 @@ import EventCard from "@/components/EventCard"
 
 const ROBS_PERSON_ID = 1
 
-export default async function Hours() {
+export default async function HoursPage() {
     const supabase = await createSupabaseClient()
     const { data, error } = await supabase
         .from("hours")

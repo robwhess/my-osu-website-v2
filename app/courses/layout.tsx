@@ -20,8 +20,12 @@ export default async function CoursesLayout({
 
     return (
         <div className="min-h-dvh flex flex-col md:flex-row items-stretch">
-            <CourseListNav courses={data} />
-            {children}
+            <div>
+                <CourseListNav courses={data} />
+            </div>
+            <div className="grow">
+                {children}
+            </div>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import Image from "next/image"
 
 import robImg from "@/static/rob.jpg"
 
-export default function Home() {
+export default function HomePage() {
     return (
         <main className="flex justify-center my-8 lg:my-12">
             <div className="card card-lg lg:card-side lg:max-w-6xl max-w-2xl mx-2 bg-base-100 shadow-xs">
