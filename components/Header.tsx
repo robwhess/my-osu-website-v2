@@ -29,7 +29,7 @@ export default function Header() {
             <div className="drawer-content">
                 <header className="py-4 px-2 border-b border-b-base-300 flex items-end justify-between gap-4">
                     <div className="flex items-center gap-3">
-                        <Link href="/" className="shrink-0">
+                        <Link href="/" className="shrink-0" aria-label="Link to home page">
                             <Image
                                 src={logoTransparent}
                                 alt="RH Logo"
@@ -40,6 +40,7 @@ export default function Header() {
                         <Link
                             href="/"
                             className="flex flex-col items-start text-inherit"
+                            aria-label="Link to home page"
                         >
                             <h1 className="text-4xl md:text-5xl">Rob Hess</h1>
                             <h2 className="ml-1 leading-tight">Oregon State University</h2>

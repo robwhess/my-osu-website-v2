@@ -50,6 +50,7 @@ export default function CourseListNav({
                 <button
                     className="btn btn-ghost btn-square text-xl"
                     onClick={() => setMenuIsOpen(prev => !prev)}
+                    aria-label="Open the course selection menu"
                 >
                     <HiMenuAlt1 />
                 </button>

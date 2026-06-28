@@ -46,7 +46,7 @@ export default async function CourseLayout({
 
     const lastCourseTerm = courseData.courseTerm[0]
     const courseTermSelect = lastCourseTerm && (
-        <select className="select">
+        <select className="select" aria-label="Choose the term and year you'd like to view for this course.">
             {courseData.courseTerm.map(courseTerm => (
                 <option key={courseTerm.id} value={courseTerm.id}>
                     {/*
