@@ -43,7 +43,7 @@ export default function CourseListNav({
     ))
 
     return (
-        <div>
+        <div className="min-h-full md:border-r md:border-r-base-300">
             <div className="md:hidden p-2 border-b border-b-base-300 flex items-center gap-2 relative">
                 <button
                     className="btn btn-ghost btn-square text-xl"
@@ -59,7 +59,7 @@ export default function CourseListNav({
                     <p className="text-gray-400">None selected</p>
                 )}
             </div>
-            <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:w-full max-md:bg-base-200 max-md:shadow-xs md:border-r md:border-r-base-300`}>
+            <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:w-full max-md:bg-base-200 max-md:shadow-xs`}>
                 <ul>
                     {courseMenuEntries}
                 </ul>
