@@ -22,24 +22,26 @@ export default function CourseListNav({
 
     const coursesByTerm = groupCoursesByTerm(courses ?? [])
     const courseMenuEntries = Object.entries(termNames).map(([ term, termName ]) => (
-        <li key={term}>
-            <h3 className="my-2 uppercase text-sm font-semibold text-gray-600">{termName}</h3>
-            <ul>
-                {coursesByTerm[term as Term].map(c => (
-                    <li
-                        key={c.id}
-                        className={`ml-2 px-3 py-1 border-l relative font-semibold ${c.id === course ? "border-l-2 border-primary" : "border-base-300 left-px"}`}
-                    >
-                        <Link
-                            href={`/courses/${c.id}`}
-                            onNavigate={() => setMenuIsOpen(false)}
+        coursesByTerm[term as Term].length > 0 && (
+            <li key={term}>
+                <h3 className="my-2 uppercase text-sm font-semibold text-gray-600">{termName}</h3>
+                <ul>
+                    {coursesByTerm[term as Term].map(c => (
+                        <li
+                            key={c.id}
+                            className={`ml-2 px-3 py-1 border-l relative font-semibold ${c.id === course ? "border-l-2 border-primary" : "border-base-300 left-px"}`}
                         >
-                            {c.number}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </li>
+                            <Link
+                                href={`/courses/${c.id}`}
+                                onNavigate={() => setMenuIsOpen(false)}
+                            >
+                                {c.number}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </li>
+        )
     ))
 
     return (

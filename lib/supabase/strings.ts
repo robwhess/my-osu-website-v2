@@ -7,11 +7,13 @@ import { Term } from "../types"
 export const termNames = {
   fall: "Fall",
   winter: "Winter",
-  spring: "Spring"
+  spring: "Spring",
+  summer: "Summer"
 } satisfies Partial<Record<Term, string>>
 
 export const termCodes = {
   fall: "f",
   winter: "w",
-  spring: "sp"
+  spring: "sp",
+  summer: "su"
 } satisfies Partial<Record<Term, string>>
