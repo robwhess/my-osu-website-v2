@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import { GoArrowRight } from "react-icons/go"
 
 import { createSupabaseClient } from "@/lib/supabase/client"
 import { termNames } from "@/lib/supabase/strings"
@@ -45,19 +46,37 @@ export default async function CourseLayout({
     }
 
     const lastCourseTerm = courseData.courseTerm[0]
-    const courseTermSelect = lastCourseTerm && (
-        <select className="select" aria-label="Choose the term and year you'd like to view for this course.">
-            {courseData.courseTerm.map(courseTerm => (
-                <option key={courseTerm.id} value={courseTerm.id}>
-                    {/*
-                      * The cast here is needed because termNames doesn't contain "archive",
-                      * and it's technically possible for courseTerm.term to be "archive",
-                      * though that won't happen in practice.
-                      */}
-                    {termNames[courseTerm.term as keyof typeof termNames]} {courseTerm.year}
-                </option>
-            ))}
-        </select>
+    const courseTermMenu = lastCourseTerm && (
+        <form
+            className="flex gap-1"
+            onSubmit={e => {
+                e.preventDefault()
+            }}
+        >
+            <select
+                className="select border-base-300"
+                aria-label="Select the term and year you'd like to view for this course."
+            >
+                {courseData.courseTerm.map(courseTerm => (
+                    <option key={courseTerm.id} value={courseTerm.id}>
+                        {/*
+                        * The cast here is needed because termNames doesn't contain "archive",
+                        * and it's technically possible for courseTerm.term to be "archive",
+                        * though that won't happen in practice.
+                        */}
+                        {termNames[courseTerm.term as keyof typeof termNames]} {courseTerm.year}
+                    </option>
+                ))}
+            </select>
+            <button
+                type="submit"
+                className="btn btn-outline btn-square bg-base-100 border-base-300"
+                aria-label="Navigate to the selected term and year for this course"
+            >
+                <GoArrowRight />
+            </button>
+        </form>
+
     )
 
     return (
@@ -67,7 +86,7 @@ export default async function CourseLayout({
                     <h1 className="text-2xl font-semibold">{courseData.number} &ndash; {courseData.title}</h1>
                     <h2 className="text-sm">{courseData.description}</h2>
                 </div>
-                {courseTermSelect && <div className="md:flex-1">{courseTermSelect}</div>}
+                {courseTermMenu && <div className="md:flex-1">{courseTermMenu}</div>}
             </div>
             <div>
                 {children}
