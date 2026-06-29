@@ -1,21 +1,29 @@
+"use client"
+
 import { MdErrorOutline } from "react-icons/md"
 
-import { createSupabaseClient } from "@/lib/supabase/client"
 import EventCard from "@/components/EventCard"
+import useClientSideQuery from "@/lib/supabase/useClientSideQuery"
+import { useCallback } from "react"
+import { SupabaseClient } from "@supabase/supabase-js"
 
 const ROBS_PERSON_ID = 1
 
-export default async function HoursPage() {
-    const supabase = await createSupabaseClient()
-    const { data, error } = await supabase
-        .from("hours")
-        .select("id, day, start, end, location, videoConferenceLink:videoconference_link, extraInfo:extra_info")
-        .eq("person_id", ROBS_PERSON_ID)
-        .eq("type", "office")
+export default function HoursPage() {
+    const queryFn = useCallback(
+            async (supabase: SupabaseClient) => await supabase
+                .from("hours")
+                .select("id, day, start, end, location, videoConferenceLink:videoconference_link, extraInfo:extra_info")
+                .eq("person_id", ROBS_PERSON_ID)
+                .eq("type", "office"),
+        []
+    )
+    const { data, error, loading } = useClientSideQuery(queryFn)
+
+    console.log("== loading:", loading)
 
     if (error) {
         console.error(error)
-        throw error
     }
 
     return (

@@ -1,4 +1,4 @@
-import { createSupabaseClient } from "@/lib/supabase/client"
+import { createClient } from "@/lib/supabase/server"
 
 import CourseListNav from "@/components/CourseListNav"
 
@@ -7,7 +7,7 @@ export default async function CoursesLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    const supabase = await createSupabaseClient()
+    const supabase = await createClient()
     const { data, error } = await supabase
         .from("course")
         .select()

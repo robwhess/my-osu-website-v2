@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { MdErrorOutline } from "react-icons/md"
 
-import { createSupabaseClient } from "@/lib/supabase/client"
+import { createClient } from "@/lib/supabase/server"
 
 export default async function CoursePage({
     params
@@ -9,7 +9,7 @@ export default async function CoursePage({
     params: Promise<{ course: string }>
 }>) {
     const { course } = await params
-    const supabase = await createSupabaseClient()
+    const supabase = await createClient()
     const { data: courseData, error } = await supabase
         .from("course")
         .select("*, courseTerm:course_term(*)")
