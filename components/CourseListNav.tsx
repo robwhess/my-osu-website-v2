@@ -22,9 +22,9 @@ export default function CourseListNav({
 
     const coursesByTerm = groupCoursesByTerm(courses ?? [])
     const courseMenuEntries = Object.entries(termNames).map(([ term, termName ]) => (
-        coursesByTerm[term as Term].length > 0 && (
-            <li key={term}>
-                <h3 className="my-2 uppercase text-sm font-semibold text-gray-600">{termName}</h3>
+        <li key={term}>
+            <h3 className="my-2 uppercase text-sm font-semibold text-gray-600">{termName}</h3>
+            {coursesByTerm[term as Term].length > 0 ? (
                 <ul>
                     {coursesByTerm[term as Term].map(c => (
                         <li
@@ -40,8 +40,10 @@ export default function CourseListNav({
                         </li>
                     ))}
                 </ul>
-            </li>
-        )
+            ) : (
+                <p className="text-xs text-gray-600 ml-2">No current courses</p>
+            )}
+        </li>
     ))
 
     return (
@@ -62,7 +64,7 @@ export default function CourseListNav({
                     <p className="text-gray-400">None selected</p>
                 )}
             </div>
-            <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:w-full max-md:bg-base-200 max-md:shadow-xs`}>
+            <nav className={`${menuIsOpen ? "" : "max-md:hidden"} md:min-h-full p-6 max-md:absolute max-md:z-10 max-md:w-full max-md:bg-base-200 max-md:shadow-xs`}>
                 <ul>
                     {courseMenuEntries}
                 </ul>
