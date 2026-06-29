@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation"
-import { GoArrowRight } from "react-icons/go"
 
 import { createSupabaseClient } from "@/lib/supabase/client"
-import { termNames } from "@/lib/supabase/strings"
+import CourseTermSelectForm from "@/components/CourseTermSelectForm"
 
 export async function generateStaticParams() {
     const supabase = await createSupabaseClient()
@@ -46,38 +45,6 @@ export default async function CourseLayout({
     }
 
     const lastCourseTerm = courseData.courseTerm[0]
-    const courseTermMenu = lastCourseTerm && (
-        <form
-            className="flex gap-1"
-            onSubmit={e => {
-                e.preventDefault()
-            }}
-        >
-            <select
-                className="select border-base-300"
-                aria-label="Select the term and year you'd like to view for this course."
-            >
-                {courseData.courseTerm.map(courseTerm => (
-                    <option key={courseTerm.id} value={courseTerm.id}>
-                        {/*
-                        * The cast here is needed because termNames doesn't contain "archive",
-                        * and it's technically possible for courseTerm.term to be "archive",
-                        * though that won't happen in practice.
-                        */}
-                        {termNames[courseTerm.term as keyof typeof termNames]} {courseTerm.year}
-                    </option>
-                ))}
-            </select>
-            <button
-                type="submit"
-                className="btn btn-outline btn-square bg-base-100 border-base-300"
-                aria-label="Navigate to the selected term and year for this course"
-            >
-                <GoArrowRight />
-            </button>
-        </form>
-
-    )
 
     return (
         <div className="p-4 flex flex-col items-stretch gap-2">
@@ -86,7 +53,18 @@ export default async function CourseLayout({
                     <h1 className="text-2xl font-semibold">{courseData.number} &ndash; {courseData.title}</h1>
                     <h2 className="text-sm">{courseData.description}</h2>
                 </div>
-                {courseTermMenu && <div className="md:flex-1">{courseTermMenu}</div>}
+                {
+                    /*
+                     * If at least one course term exists for this course, then
+                     * render a menu the user can use to select the course term
+                     * they want to view.
+                     */
+                    lastCourseTerm && (
+                        <div className="md:flex-1">
+                            <CourseTermSelectForm courseTerms={courseData.courseTerm} />
+                        </div>
+                    )
+                }
             </div>
             <div>
                 {children}
