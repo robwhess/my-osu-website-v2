@@ -1,6 +1,7 @@
 "use client"
 
 import { GoArrowRight } from "react-icons/go"
+import { useRouter } from "next/navigation"
 
 import { termNames } from "@/lib/supabase/strings"
 import { CourseTerm } from "@/lib/types"
@@ -10,14 +11,16 @@ export default function CourseTermSelectForm({
 }: Readonly<{
     courseTerms: CourseTerm[]
 }>) {
+    const router = useRouter()
     return (
         <form
             className="flex gap-1"
             onSubmit={e => {
                 e.preventDefault()
                 const formData = new FormData(e.target)
-                const { courseTerm } = Object.fromEntries(formData)
-                console.log("== courseTerm:", courseTerm)
+                const courseTerm = formData.get("courseTerm") as string
+                const [ course, termCode ] = courseTerm.split("-")
+                router.push(`/courses/${course}/${termCode}`)
             }}
         >
             <select
