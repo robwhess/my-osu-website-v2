@@ -44,8 +44,6 @@ export default async function CourseLayout({
         notFound()
     }
 
-    const lastCourseTerm = courseData.courseTerm[0]
-
     return (
         <div className="p-4 flex flex-col items-stretch gap-2">
             <div className="flex flex-col md:flex-row md:justify-between items-stretch md:items-center gap-4">
@@ -59,7 +57,7 @@ export default async function CourseLayout({
                      * render a menu the user can use to select the course term
                      * they want to view.
                      */
-                    lastCourseTerm && (
+                    courseData.courseTerm.length > 0 && (
                         <div className="md:flex-1">
                             <CourseTermSelectForm courseTerms={courseData.courseTerm} />
                         </div>
