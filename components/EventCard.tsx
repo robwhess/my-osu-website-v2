@@ -29,8 +29,6 @@ export default function EventCard({
     const startTime = dayjs(start, "HH:mm:ss").format("h:mm a")
     const endTime = end && dayjs(end, "HH:mm:ss").format("h:mm a")
 
-    extraInfo = "sadfasdf asf asdfaswf asdf"
-
     return (
         <div className="card bg-base-100 shadow-sm">
             <div className="card-body p-4 md:p-6 gap-1">
