@@ -7,7 +7,7 @@ export default async function CoursesLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    const supabase = await createClient()
+    const supabase = createClient()
     const { data, error } = await supabase
         .from("course")
         .select()

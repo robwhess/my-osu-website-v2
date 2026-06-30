@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import CourseTermSelectForm from "@/components/CourseTermSelectForm"
 
 export async function generateStaticParams() {
-    const supabase = await createClient()
+    const supabase = createClient()
     const { data, error } = await supabase
         .from("course")
         .select("id")
@@ -26,7 +26,7 @@ export default async function CourseLayout({
     children: React.ReactNode
 }>) {
     const { course } = await params
-    const supabase = await createClient()
+    const supabase = createClient()
     const { data: courseData, error } = await supabase
         .from("course")
         .select("*, courseTerm:course_term(*)")

@@ -9,7 +9,7 @@ export default async function CoursePage({
     params: Promise<{ course: string }>
 }>) {
     const { course } = await params
-    const supabase = await createClient()
+    const supabase = createClient()
     const { data: courseData, error } = await supabase
         .from("course")
         .select("*, courseTerm:course_term(*)")
