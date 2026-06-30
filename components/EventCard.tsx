@@ -29,19 +29,21 @@ export default function EventCard({
     const startTime = dayjs(start, "HH:mm:ss").format("h:mm a")
     const endTime = end && dayjs(end, "HH:mm:ss").format("h:mm a")
 
+    extraInfo = "sadfasdf asf asdfaswf asdf"
+
     return (
         <div className="card bg-base-100 shadow-sm">
-            <div className="card-body gap-1">
-                <h3 className="card-title text-xl md:text-2xl font-bold">
+            <div className="card-body p-4 md:p-6 gap-1">
+                <h3 className="card-title text-lg md:text-xl font-bold">
                     {day}
                 </h3>
-                <div className="flex items-center gap-2 text-lg md:text-xl">
+                <div className="flex items-center gap-2 md:text-lg">
                     <p className="grow-0"><MdAccessTime /></p>
                     <p>{startTime}{endTime && <> &ndash; {endTime}</>}</p>
                 </div>
                 <div className="flex items-center gap-4">
                     {location && (
-                        <div className="flex items-center gap-2 text-lg md:text-xl">
+                        <div className="flex items-center gap-2 md:text-lg">
                             <p className="grow-0"><MdOutlineLocationOn /></p>
                             <p>{location}</p>
                         </div>
@@ -57,7 +59,7 @@ export default function EventCard({
                     )}
                 </div>
                 {extraInfo && (
-                    <div className="flex items-center gap-2 text-gray-400">
+                    <div className="flex items-center gap-2 text-xs md:text-sm text-gray-400">
                         <p className="grow-0 ml-0.5"><MdOutlineInfo /></p>
                         <p>{extraInfo}</p>
                     </div>

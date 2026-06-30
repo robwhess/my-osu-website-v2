@@ -53,8 +53,8 @@ export default function Header() {
                     >
                         <LiaBarsSolid />
                     </label>
-                    <nav className="hidden md:block text-xl font-medium">
-                        <ul className="menu menu-xl menu-horizontal">
+                    <nav className="hidden md:block font-medium">
+                        <ul className="menu menu-lg menu-horizontal">
                             {navLinks.map(link => (
                                 <li key={link.href} className={`${pathname.startsWith(link.href) ? "border-b-2 border-primary" : ""}`}>
                                     <Link href={link.href} className="rounded-none">{link.title}</Link>
