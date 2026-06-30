@@ -1,0 +1,1 @@
+create index idx_hours_person_id on hours (person_id);
