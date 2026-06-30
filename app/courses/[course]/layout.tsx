@@ -27,7 +27,7 @@ export default async function CourseLayout({
 }>) {
     const { course } = await params
     const supabase = createClient()
-    const { data: courseData, error } = await supabase
+    const { data, error } = await supabase
         .from("course")
         .select("*, courseTerm:course_term(*)")
         .eq("id", course)
@@ -40,7 +40,7 @@ export default async function CourseLayout({
         throw error
     }
 
-    if (!courseData) {
+    if (!data) {
         notFound()
     }
 
@@ -48,8 +48,8 @@ export default async function CourseLayout({
         <div className="p-4 flex flex-col items-stretch gap-2">
             <div className="flex flex-col md:flex-row md:justify-between items-stretch md:items-center gap-4">
                 <div className="md:flex-2">
-                    <h1 className="text-2xl font-semibold">{courseData.number} &ndash; {courseData.title}</h1>
-                    <h2 className="text-sm">{courseData.description}</h2>
+                    <h1 className="text-2xl font-semibold">{data.number} &ndash; {data.title}</h1>
+                    <h2 className="text-sm">{data.description}</h2>
                 </div>
                 {
                     /*
@@ -57,9 +57,9 @@ export default async function CourseLayout({
                      * render a menu the user can use to select the course term
                      * they want to view.
                      */
-                    courseData.courseTerm.length > 0 && (
+                    data.courseTerm.length > 0 && (
                         <div className="md:flex-1">
-                            <CourseTermSelectForm courseTerms={courseData.courseTerm} />
+                            <CourseTermSelectForm courseTerms={data.courseTerm} />
                         </div>
                     )
                 }
