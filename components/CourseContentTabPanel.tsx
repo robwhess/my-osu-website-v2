@@ -7,7 +7,7 @@ export default function CourseContentTabList({
     tabs,
     children
 }: Readonly<{
-    tabs: Array<{ title: string, href: string, icon: React.ReactNode }>
+    tabs: Array<{ title: string, href: string, icon: React.ReactNode }>,
     children: React.ReactNode
 }>) {
     const pathname = usePathname()
