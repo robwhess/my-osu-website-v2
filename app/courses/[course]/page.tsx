@@ -3,6 +3,21 @@ import { MdErrorOutline } from "react-icons/md"
 
 import { createClient } from "@/lib/supabase/server"
 
+export async function generateStaticParams() {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from("course")
+        .select("id")
+        .order("number", { ascending: true })
+
+    if (error) {
+        console.error(error)
+        throw error
+    }
+
+    return data.map(c => ({ course: c.id }))
+}
+
 export default async function CoursePage({
     params
 }: Readonly<{
@@ -10,7 +25,7 @@ export default async function CoursePage({
 }>) {
     const { course } = await params
     const supabase = createClient()
-    const { data: courseData, error } = await supabase
+    const { data, error } = await supabase
         .from("course")
         .select("*, courseTerm:course_term(*)")
         .eq("id", course)
@@ -23,8 +38,12 @@ export default async function CoursePage({
         throw error
     }
 
-    const lastCourseTerm = courseData?.courseTerm[0]
+    const lastCourseTerm = data?.courseTerm[0]
 
+    /*
+     * If a course term exists for this course, then immediately redirect to
+     * the page to view the most recent course term.
+     */
     if (lastCourseTerm) {
         const [ course, termCode ] = lastCourseTerm.id.split("-")
         redirect(`/courses/${course}/${termCode}`)

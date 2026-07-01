@@ -3,21 +3,6 @@ import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import CourseTermSelectForm from "@/components/CourseTermSelectForm"
 
-export async function generateStaticParams() {
-    const supabase = createClient()
-    const { data, error } = await supabase
-        .from("course")
-        .select("id")
-        .order("number", { ascending: true })
-
-    if (error) {
-        console.error(error)
-        throw error
-    }
-
-    return data.map(c => ({ course: c.id }))
-}
-
 export default async function CourseLayout({
     params,
     children
@@ -45,7 +30,7 @@ export default async function CourseLayout({
     }
 
     return (
-        <div className="p-4 flex flex-col items-stretch gap-2">
+        <div className="p-2 md:p-4 flex flex-col items-stretch gap-2">
             <div className="flex flex-col md:flex-row md:justify-between items-stretch md:items-center gap-4">
                 <div className="md:flex-2">
                     <h1 className="text-2xl font-semibold">{data.number} &ndash; {data.title}</h1>
