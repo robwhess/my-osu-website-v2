@@ -11,11 +11,11 @@ export default function CourseContentTabList({
     children: React.ReactNode
 }>) {
     const pathname = usePathname()
-    const activeTabStyles = "menu-active bg-none bg-base-100 text-base-content border max-md:border-r-0 md:border-b-0 border-base-300"
+    const activeTabStyles = "menu-active bg-none bg-base-100 text-base-content border border-b-0 border-base-300"
 
     return (
-        <div className="flex md:flex-col items-stretch">
-            <ul role="tablist" className="menu max-md:menu-xs md:menu-horizontal p-0 max-md:-mr-px md:-mb-px">
+        <div className="flex flex-col items-stretch">
+            <ul role="tablist" className="menu menu-horizontal p-0 -mb-px">
                 {tabs.map(tab => (
                     <li
                         key={tab.href}
@@ -33,6 +33,5 @@ export default function CourseContentTabList({
                 {children}
             </div>
         </div>
-
     )
 }

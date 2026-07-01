@@ -47,8 +47,8 @@ export default function CourseListNav({
     ))
 
     return (
-        <div className="min-h-full md:border-r md:border-r-base-300">
-            <div className="md:hidden p-2 border-b border-b-base-300 flex items-center gap-2 relative">
+        <div className="min-h-full md:border-r md:border-r-base-300 relative">
+            <div className="md:hidden p-2 border-b border-b-base-300 flex items-center gap-2">
                 <button
                     className="btn btn-ghost btn-square text-xl"
                     onClick={() => setMenuIsOpen(prev => !prev)}

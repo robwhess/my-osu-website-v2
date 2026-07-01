@@ -7,6 +7,7 @@ import { FaRegCalendarAlt } from "react-icons/fa"
 import { createClient } from "@/lib/supabase/server"
 
 import CourseContentTabPanel from "@/components/CourseContentTabPanel"
+import CourseContentMenuPanel from "@/components/CourseContentMenuPanel"
 
 export default async function CourseTermLayout({
     params,
@@ -72,8 +73,17 @@ export default async function CourseTermLayout({
     ]
 
     return (
-        <CourseContentTabPanel tabs={tabList}>
-            {children}
-        </CourseContentTabPanel>
+        <>
+            <div className="md:hidden">
+                <CourseContentMenuPanel sections={tabList}>
+                    {children}
+                </CourseContentMenuPanel>
+            </div>
+            <div className="max-md:hidden mt-4">
+                <CourseContentTabPanel tabs={tabList}>
+                    {children}
+                </CourseContentTabPanel>
+            </div>
+        </>
     )
 }
