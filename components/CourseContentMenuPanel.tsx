@@ -22,7 +22,7 @@ export default function CourseContentMenuPanel({
                     <button
                         className="btn btn-ghost btn-square"
                         onClick={() => setMenuIsOpen(prev => !prev)}
-                        aria-label="Open the course content menu"
+                        aria-label="Open/close the course content selection menu"
                     >
                         <HiMenuAlt1 />
                     </button>
