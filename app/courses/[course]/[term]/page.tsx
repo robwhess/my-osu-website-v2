@@ -25,8 +25,20 @@ export default async function CourseTermPage({
     params: Promise<{ course: string, term: string }>
 }>) {
     const { course, term } = await params
+    const courseTermId = `${course}-${term}`
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from("course_term")
+        .select("*,lecture(*)")
+        .match({ id: courseTermId })
+        .maybeSingle()
+
+    if (error) {
+        console.error(error)
+        throw error
+    }
 
     return (
-        <h2>{course} - {term}</h2>
+        <h2>{data?.course_id} - {data?.term} {data?.year}</h2>
     )
 }
