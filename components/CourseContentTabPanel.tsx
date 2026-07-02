@@ -11,11 +11,11 @@ export default function CourseContentTabList({
     children: React.ReactNode
 }>) {
     const pathname = usePathname()
-    const activeTabStyles = "menu-active bg-none bg-base-100 text-base-content border border-b-0 border-base-300"
+    const activeTabStyles = "menu-active bg-primary text-primary-content"
 
     return (
         <div className="flex flex-col items-stretch">
-            <ul role="tablist" className="menu menu-horizontal p-0 -mb-px">
+            <ul role="tablist" className="menu menu-horizontal">
                 {pages.map(page => (
                     <li
                         key={page.href}
