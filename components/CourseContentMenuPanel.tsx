@@ -1,24 +1,26 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
 import { HiMenuAlt1 } from "react-icons/hi"
+import { MdChevronRight } from "react-icons/md"
 
 export default function CourseContentMenuPanel({
-    sections,
+    pages,
     children
 }: Readonly<{
-    sections: Array<{ title: string, href: string, icon: React.ReactNode }>,
+    pages: Array<{ title: string, href: string, icon: React.ReactNode }>,
     children: React.ReactNode
 }>) {
     const [ menuIsOpen, setMenuIsOpen ] = useState(false)
     const pathname = usePathname()
+    const selectedPage = pages.find(page => pathname === page.href)
 
     return (
         <div className="flex flex-col items-stretch">
             <div className="min-h-full relative">
-                <div className="flex items-center gap-2 bg-base-100 border border-b-0 border-base-300">
+                <div className="flex items-center gap-2 text-sm bg-base-100 border border-b-0 border-base-300">
                     <button
                         className="btn btn-ghost btn-square"
                         onClick={() => setMenuIsOpen(prev => !prev)}
@@ -26,23 +28,26 @@ export default function CourseContentMenuPanel({
                     >
                         <HiMenuAlt1 />
                     </button>
-                    <p className="text-sm">Basics</p>
+                    <p>Page</p>
+                    <p><MdChevronRight /></p>
+                    {selectedPage ? (
+                        <p>{selectedPage.title}</p>
+                    ) : (
+                        <p className="text-gray-400">None selected</p>
+                    )}
                 </div>
                 <nav className={`${menuIsOpen ? "" : "hidden"} absolute px-2 pb-4 w-full z-10 bg-base-100 border border-t-0 border-base-300 shadow-xs`}>
                     <ul>
-                        {sections.map(s => (
-                        <li
-                            key={s.href}
-                            className={`ml-2 px-3 py-1 border-l text-sm relative ${s.href === pathname ? "border-l-2 border-primary" : "border-base-300 left-px"}`}
-                        >
-                            <Link
-                                href={s.href}
-                                onNavigate={() => setMenuIsOpen(false)}
+                        {pages.map(page => (
+                            <li
+                                key={page.href}
+                                className={`ml-2 px-3 py-1 border-l text-sm relative ${page.href === pathname ? "border-l-2 border-primary" : "border-base-300 left-px"}`}
                             >
-                                {s.title}
-                            </Link>
-                        </li>
-                    ))}
+                                <Link href={page.href} onNavigate={() => setMenuIsOpen(false)}>
+                                    {page.title}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>

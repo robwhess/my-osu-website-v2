@@ -4,10 +4,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export default function CourseContentTabList({
-    tabs,
+    pages,
     children
 }: Readonly<{
-    tabs: Array<{ title: string, href: string, icon: React.ReactNode }>,
+    pages: Array<{ title: string, href: string, icon: React.ReactNode }>,
     children: React.ReactNode
 }>) {
     const pathname = usePathname()
@@ -16,15 +16,15 @@ export default function CourseContentTabList({
     return (
         <div className="flex flex-col items-stretch">
             <ul role="tablist" className="menu menu-horizontal p-0 -mb-px">
-                {tabs.map(tab => (
+                {pages.map(page => (
                     <li
-                        key={tab.href}
+                        key={page.href}
                         role="tab"
-                        className={`${pathname === tab.href ? activeTabStyles : ""}`}
+                        className={`${pathname === page.href ? activeTabStyles : ""}`}
                     >
-                        <Link href={tab.href} className="flex flex-col gap-1">
-                            <p className="text-lg">{tab.icon}</p>
-                            <p>{tab.title}</p>
+                        <Link href={page.href} className="flex flex-col gap-1">
+                            <p className="text-lg">{page.icon}</p>
+                            <p>{page.title}</p>
                         </Link>
                     </li>
                 ))}

@@ -34,7 +34,7 @@ export default async function CourseTermLayout({
         notFound()
     }
 
-    const tabList = [
+    const pageList = [
         {
             title: "Basics",
             href: `/courses/${course}/${term}`,
@@ -75,12 +75,12 @@ export default async function CourseTermLayout({
     return (
         <>
             <div className="md:hidden">
-                <CourseContentMenuPanel sections={tabList}>
+                <CourseContentMenuPanel pages={pageList}>
                     {children}
                 </CourseContentMenuPanel>
             </div>
             <div className="max-md:hidden mt-4">
-                <CourseContentTabPanel tabs={tabList}>
+                <CourseContentTabPanel pages={pageList}>
                     {children}
                 </CourseContentTabPanel>
             </div>
